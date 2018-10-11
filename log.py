@@ -16,6 +16,8 @@ total = re.findall(r' - - ', response)
 print (len(total))
 
 #2
+#Printing how many requests were made on each day, week, and month. 
+
 Month_Jan = re.findall(r'Jan', response)
 Month_Feb = re.findall(r'Feb', response)
 Month_Mar = re.findall(r'Mar', response)
@@ -66,7 +68,18 @@ for a, b in daydict.items():
     print(a, b)
 
 '''print (week)'''
-print ("\nMonths:")
+print ("\nMonths:\n")
 
 for x, y in month.items():
     print(x, y)
+
+
+#3
+#Printing perecentage of requests that were not successful
+
+unsuccessful = re.findall(r'\s[4][0-9][0-9] ', response)
+
+percent = len(unsuccessful)/len(total)
+print("\n Percentage of requests that were not successful (any 4xx status code): ")
+print(round(percent * 100, 2),"%")
+
