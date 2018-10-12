@@ -5,7 +5,7 @@ import datetime
 import itertools
 import operator
 
-print(input("Hi, Press the enter key to begin! Do not push anything else because then I won't work."))
+print(input("\nHi, Press the enter key to begin! Do not push anything else because then I won't work."))
 
 url = 'https://s3.amazonaws.com/tcmg476/http_access_log'
 response = str(urllib.request.urlopen(url).read())
@@ -15,9 +15,11 @@ file.write(response)
 
 
 #1
+#Total requests made in the time period of this log 
 total = ()
 total = re.findall(r' - - ', response)
 
+print ("\nThe total requests that were made in the time period represented in the log: ")
 print (len(total))
 
 #2
@@ -95,7 +97,7 @@ successfull = re.findall(r'\s[3][0-9][0-9] ', response)
 
 per = len(successfull)/len(total)
 print("\nPercentage of the requests that were redirected elsewhere (any 3xx codes): ")
-print(round(per * 100, 2),"%")
+print(round(per * 100, 2),"%\n")
 
 #5
 #Most-requested file 
