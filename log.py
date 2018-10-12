@@ -1,6 +1,11 @@
 import urllib.request
 import urllib.parse
 import re
+import datetime
+import itertools
+import operator
+
+print(input("Hi, Press the enter key to begin! Do not push anything else because then I won't work."))
 
 url = 'https://s3.amazonaws.com/tcmg476/http_access_log'
 response = str(urllib.request.urlopen(url).read())
@@ -47,7 +52,7 @@ Dec = len(Month_Dec)
 month = {"January" : Jan, "February" : Feb, "March" : Mar, "April" : Apr, "May" : May, "Jun" : Jun, "July" : Jul, "August" : Aug, "September" : Sep, "October" : Oct, "November" : Nov, "December" : Dec}
 
 days = ()
-days = re.findall(r'[0-9][0-9]\W[A-Z][a-z]\W[0-9][0-9][0-9][0-9]', response)
+days = re.findall(r'[0-9][0-9]\W[A-Z][a-z][a-z]\W[0-9][0-9][0-9][0-9][0-9]', response)
 
 individual_days = set(days)
 
@@ -61,7 +66,7 @@ for everyday in individual_days:
     for i in days: 
         if i == x:
             count = count + 1 
-        daydict[x] = count
+        daydict[x] = [count]
 
 print ("\nDays:")
 for a, b in daydict.items():
@@ -69,7 +74,6 @@ for a, b in daydict.items():
 
 '''print (week)'''
 print ("\nMonths:\n")
-
 for x, y in month.items():
     print(x, y)
 
@@ -92,4 +96,7 @@ successfull = re.findall(r'\s[3][0-9][0-9] ', response)
 per = len(successfull)/len(total)
 print("\nPercentage of the requests that were redirected elsewhere (any 3xx codes): ")
 print(round(per * 100, 2),"%")
+
+#5
+#Most-requested file 
 
