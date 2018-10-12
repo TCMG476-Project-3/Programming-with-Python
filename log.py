@@ -80,6 +80,16 @@ for x, y in month.items():
 unsuccessful = re.findall(r'\s[4][0-9][0-9] ', response)
 
 percent = len(unsuccessful)/len(total)
-print("\n Percentage of requests that were not successful (any 4xx status code): ")
+print("\nPercentage of the requests that were not successful (any 4xx status code): ")
 print(round(percent * 100, 2),"%")
+
+
+#4
+#Printing percentage of requests that were redirected
+
+successfull = re.findall(r'\s[3][0-9][0-9] ', response)
+
+per = len(successfull)/len(total)
+print("\nPercentage of the requests that were redirected elsewhere (any 3xx codes): ")
+print(round(per * 100, 2),"%")
 
